@@ -6,6 +6,7 @@ import View.DrawApple;
 import View.Drawing;
 
 import java.awt.*;
+import java.util.Random;
 
 
 public class AppleController implements GameController
@@ -14,16 +15,22 @@ public class AppleController implements GameController
     private Drawing drawing;
     private int posX;
     private int posY;
+    private Random rand;
 
     public AppleController ()
     {
-        apple = new Apple(10 * GamePanel.DIMENSION, 10 * GamePanel.DIMENSION, GamePanel.DIMENSION);
+        rand = new Random();
+        randomCoordinate();
+        apple = new Apple(posX, posY , GamePanel.DIMENSION);
     }
 
     private void randomCoordinate ()
     {
-        posX = (int) (Math.random() * ((GamePanel.WIDTH - GamePanel.DIMENSION) / GamePanel.DIMENSION));
-        posY = (int) (Math.random() * ((GamePanel.HEIGHT - GamePanel.DIMENSION) /GamePanel.DIMENSION));
+        posX = rand.nextInt(GamePanel.DIMENSION + 1 - 5) + 5;
+        posY = rand.nextInt(GamePanel.DIMENSION + 1 - 5) + 5;
+
+        posX *= GamePanel.DIMENSION;
+        posY *= GamePanel.DIMENSION;
     }
 
     @Override
