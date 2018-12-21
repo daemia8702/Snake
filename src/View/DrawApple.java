@@ -19,6 +19,6 @@ public class DrawApple implements Drawing
     public void draw(Graphics g)
     {
         g.setColor(Color.RED);
-        g.fillRect(x, y, dimension, dimension);
+        g.fillOval(x, y, dimension, dimension);
     }
 }

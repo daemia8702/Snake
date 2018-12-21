@@ -5,8 +5,8 @@ import java.awt.image.BufferStrategy;
 
 public class GamePanel extends Canvas implements Runnable
 {
-    public static final int WIDTH = 600;
-    public static final int HEIGHT = 600;
+    public static final int WIDTH = 450;
+    public static final int HEIGHT = 450;
     public static final int DIMENSION = 15;
 
     private Thread thread;
@@ -88,7 +88,7 @@ public class GamePanel extends Canvas implements Runnable
         apple.draw(g);
 
         g.setColor(Color.WHITE);
-        g.drawString(Integer.toString(score), 10, 10);
+        g.drawString("Score: " + score, 20, 20);
 
         g.dispose();
         bs.show();
@@ -98,7 +98,7 @@ public class GamePanel extends Canvas implements Runnable
     @Override
     public void run ()
     {
-        int fps = 10;
+        int fps = 15;
         double timePerTick = 1000000000 / fps;
         double delta = 0;
         long now;
