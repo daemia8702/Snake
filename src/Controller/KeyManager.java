@@ -14,15 +14,17 @@ public class KeyManager extends KeyAdapter
     private boolean right;
     private boolean up;
     private boolean down;
-    private Snake snake;
+    private SnakeController snake;
+    private int entityDimension;
 
-    public KeyManager (Snake snake)
+    public KeyManager (SnakeController snake, int entityDimension)
     {
         left = false;
         right = false;
         up = false;
         down = false;
         this.snake = snake;
+        this.entityDimension = entityDimension;
     }
 
     public void keyPressed (KeyEvent e)
@@ -32,7 +34,7 @@ public class KeyManager extends KeyAdapter
         if (e.getKeyCode() == KeyEvent.VK_LEFT && !right)
         {
             left = true;
-            snake.setMoving(new SnakeMoveLeft());
+            snake.setMoving(new SnakeMoveLeft(entityDimension));
 
             up = false;
             down = false;
@@ -42,7 +44,7 @@ public class KeyManager extends KeyAdapter
         if (e.getKeyCode() == KeyEvent.VK_RIGHT && !left)
         {
             right = true;
-            snake.setMoving(new SnakeMoveRight());
+            snake.setMoving(new SnakeMoveRight(entityDimension));
 
             left = false;
             up = false;
@@ -52,7 +54,7 @@ public class KeyManager extends KeyAdapter
         if (e.getKeyCode() == KeyEvent.VK_UP && !down)
         {
             up = true;
-            snake.setMoving(new SnakeMoveUp());
+            snake.setMoving(new SnakeMoveUp(entityDimension));
 
             left = false;
             down = false;
@@ -63,7 +65,7 @@ public class KeyManager extends KeyAdapter
         if (e.getKeyCode() == KeyEvent.VK_DOWN && !up)
         {
             down = true;
-            snake.setMoving(new SnakeMoveDown());
+            snake.setMoving(new SnakeMoveDown(entityDimension));
 
             left = false;
             up = false;

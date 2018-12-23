@@ -1,6 +1,5 @@
 package Controller.BodyController;
 
-import Controller.GamePanel;
 import Model.BodyPart;
 import Model.Entity;
 
@@ -8,6 +7,12 @@ import java.util.List;
 
 public class GrowIfDown implements Growing
 {
+    private int entityDimension;
+
+    public GrowIfDown (int entityDimension)
+    {
+        this.entityDimension = entityDimension;
+    }
 
     @Override
     public void grow(List<Entity> snake)
@@ -15,6 +20,6 @@ public class GrowIfDown implements Growing
         int headX = snake.get(0).getPosX();
         int headY = snake.get(0).getPosY();
 
-        snake.add(0 , new BodyPart(headX, headY + GamePanel.DIMENSION, GamePanel.DIMENSION));
+        snake.add(0 , new BodyPart(headX, headY + entityDimension, entityDimension));
     }
 }

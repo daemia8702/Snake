@@ -5,9 +5,9 @@ import java.awt.image.BufferStrategy;
 
 public class GamePanel extends Canvas implements Runnable
 {
-    public static final int WIDTH = 450;
-    public static final int HEIGHT = 450;
-    public static final int DIMENSION = 15;
+    private final int WIDTH = 450;
+    private final int HEIGHT = 450;
+    private final int DIMENSION = 15;
 
     private Thread thread;
     private boolean running = false;
@@ -19,10 +19,10 @@ public class GamePanel extends Canvas implements Runnable
 
     public GamePanel ()
     {
-        snake = new Snake();
-        apple = new AppleController();
-        keyManager = new KeyManager((Snake) snake);
-        collision = new Collision();
+        snake = new SnakeController(DIMENSION);
+        apple = new AppleController(WIDTH, HEIGHT, DIMENSION);
+        keyManager = new KeyManager((SnakeController) snake, DIMENSION);
+        collision = new Collision(WIDTH, HEIGHT);
         this.setFocusable(true);
         this.addKeyListener(keyManager);
     }
@@ -55,14 +55,14 @@ public class GamePanel extends Canvas implements Runnable
     {
         snake.update();
 
-        if (collision.collectApple(((Snake) snake).getSnake().get(0), ((AppleController) apple).getApple()))
+        if (collision.collectApple(((SnakeController) snake).getSnake().get(0), ((AppleController) apple).getApple()))
         {
             apple.update();
-            ((Snake) snake).snakeGrowing(keyManager.isLeft(), keyManager.isRight(), keyManager.isUp(), keyManager.isDown());
+            ((SnakeController) snake).snakeGrowing(keyManager.isLeft(), keyManager.isRight(), keyManager.isUp(), keyManager.isDown());
             score++;
         }
 
-        collision.collideWithWalls((Snake) snake);
+        collision.collideWithWalls((SnakeController) snake);
     }
 
     private void render ()
@@ -129,5 +129,15 @@ public class GamePanel extends Canvas implements Runnable
             }
         }
         stop();
+    }
+
+    public int getWIDTH()
+    {
+        return WIDTH;
+    }
+
+    public int getHEIGHT()
+    {
+        return HEIGHT;
     }
 }

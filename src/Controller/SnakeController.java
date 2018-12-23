@@ -9,41 +9,46 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Snake implements GameController
+public class SnakeController implements GameController
 {
+    private final int STARTING_X = 8;
+    private final int STARTING_Y = 8;
+
     private List<Entity> snake = new LinkedList<>();
     private Drawing drawing;
     private Moving moving = new DontMove();
     private Growing growing;
+    private int entityDimension;
 
-    public Snake ()
+    public SnakeController (int entityDimension)
     {
-        snake.add(new BodyPart(8 * GamePanel.DIMENSION, 8 * GamePanel.DIMENSION, GamePanel.DIMENSION));
+        this.entityDimension = entityDimension;
+        snake.add(new BodyPart(STARTING_X * entityDimension, STARTING_Y * entityDimension, entityDimension));
     }
 
     public void snakeGrowing (boolean left, boolean right, boolean up, boolean down)
     {
         if (left)
         {
-            growing = new GrowIfLeft();
+            growing = new GrowIfLeft(entityDimension);
             growing.grow(snake);
         }
 
         if (right)
         {
-            growing = new GrowIfRight();
+            growing = new GrowIfRight(entityDimension);
             growing.grow(snake);
         }
 
         if (up)
         {
-            growing = new GrowIfUp();
+            growing = new GrowIfUp(entityDimension);
             growing.grow(snake);
         }
 
         if (down)
         {
-            growing = new GrowIfDown();
+            growing = new GrowIfDown(entityDimension);
             growing.grow(snake);
         }
     }
@@ -55,12 +60,12 @@ public class Snake implements GameController
         {
             if (i == 0)
             {
-                drawing = new DrawSnakeHead(snake.get(0).getPosX(), snake.get(0).getPosY(), GamePanel.DIMENSION);
+                drawing = new DrawSnakeHead(snake.get(0).getPosX(), snake.get(0).getPosY(), entityDimension);
                 drawing.draw(g);
             }
             else
             {
-                drawing = new DrawSnakeBody(snake.get(i).getPosX(), snake.get(i).getPosY(), GamePanel.DIMENSION);
+                drawing = new DrawSnakeBody(snake.get(i).getPosX(), snake.get(i).getPosY(), entityDimension);
                 drawing.draw(g);
             }
         }

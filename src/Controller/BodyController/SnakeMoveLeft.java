@@ -1,6 +1,5 @@
 package Controller.BodyController;
 
-import Controller.GamePanel;
 import Model.Entity;
 
 import java.util.List;
@@ -8,6 +7,14 @@ import java.util.List;
 
 public class SnakeMoveLeft implements Moving
 {
+
+    private int entityDimension;
+
+    public SnakeMoveLeft (int entityDimension)
+    {
+        this.entityDimension = entityDimension;
+    }
+
     @Override
     public void move (List<Entity> snake)
     {
@@ -16,7 +23,7 @@ public class SnakeMoveLeft implements Moving
 
         Entity newHead = snake.remove(snake.size()-1);
 
-        headX -= GamePanel.DIMENSION;
+        headX -= entityDimension;
 
         newHead.setPosX(headX);
         newHead.setPosY(headY);
