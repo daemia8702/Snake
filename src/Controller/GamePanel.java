@@ -63,6 +63,8 @@ public class GamePanel extends Canvas implements Runnable
         }
 
         collision.collideWithWalls((SnakeController) snake);
+        if (collision.collideWithTale((SnakeController) snake))
+            running = false;
     }
 
     private void render ()

@@ -18,9 +18,7 @@ public class DrawSnakeHead implements Drawing
     @Override
     public void draw(Graphics g)
     {
-        g.setColor(Color.YELLOW);
-        g.fillRect(x, y, dimension, dimension);
-        g.setColor(Color.RED);
-        g.drawRect(x, y, dimension, dimension);
+        g.setColor(Color.GRAY);
+        g.fillOval(x, y, dimension, dimension);
     }
 }

@@ -33,9 +33,9 @@ public class KeyManager extends KeyAdapter
 
         if (e.getKeyCode() == KeyEvent.VK_LEFT && !right)
         {
-            left = true;
             snake.setMoving(new SnakeMoveLeft(entityDimension));
 
+            left = true;
             up = false;
             down = false;
             right = false;
@@ -43,9 +43,9 @@ public class KeyManager extends KeyAdapter
 
         if (e.getKeyCode() == KeyEvent.VK_RIGHT && !left)
         {
-            right = true;
             snake.setMoving(new SnakeMoveRight(entityDimension));
 
+            right = true;
             left = false;
             up = false;
             down = false;
@@ -53,9 +53,9 @@ public class KeyManager extends KeyAdapter
 
         if (e.getKeyCode() == KeyEvent.VK_UP && !down)
         {
-            up = true;
             snake.setMoving(new SnakeMoveUp(entityDimension));
 
+            up = true;
             left = false;
             down = false;
             right = false;
@@ -64,9 +64,9 @@ public class KeyManager extends KeyAdapter
 
         if (e.getKeyCode() == KeyEvent.VK_DOWN && !up)
         {
-            down = true;
             snake.setMoving(new SnakeMoveDown(entityDimension));
 
+            down = true;
             left = false;
             up = false;
             right = false;
