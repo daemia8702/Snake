@@ -32,15 +32,13 @@ public class AppleController implements GameController
 
     private void randomCoordinate ()
     {
-        /*
-            Random szám generálás 0 és (szélesség-dimenzió)/dimenzió között
-         */
+        posX = rand.nextInt(gamePanelWidth);
+        posY = rand.nextInt(gamePanelHeight);
 
-        posX = rand.nextInt((gamePanelWidth - entityDimension + 1 - entityDimension) + entityDimension) / entityDimension;
-        posY = rand.nextInt((gamePanelHeight- entityDimension + 1 - entityDimension) + entityDimension) / entityDimension;
-
-        posX *= entityDimension;
-        posY *= entityDimension;
+        posX -= posX % entityDimension;
+        posY -= posY % entityDimension;
+        //System.out.println("Generated xPos: " + posX);
+        //System.out.println("Generated yPos: " + posY);
     }
 
     @Override

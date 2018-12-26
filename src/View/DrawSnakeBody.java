@@ -18,7 +18,7 @@ public class DrawSnakeBody implements Drawing
     @Override
     public void draw(Graphics g)
     {
-        g.setColor(Color.BLUE);
+        g.setColor(Color.GREEN);
         g.drawOval(x, y, dimension, dimension);
     }
 }

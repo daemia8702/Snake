@@ -94,7 +94,7 @@ public class GamePanel extends Canvas implements Runnable
 
         g.dispose();
         bs.show();
-        Toolkit.getDefaultToolkit().sync();
+        //Toolkit.getDefaultToolkit().sync();
     }
 
     @Override
