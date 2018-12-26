@@ -1,7 +1,18 @@
 package Model;
 
+/**
+ * The base abstract class for the game entities
+ */
+
 public abstract class Entity
 {
+
+    /**
+     * Private field for the game entities
+     * posX for x coordiante
+     * posY for y coordinate
+     * dimension for the width and height
+     */
     private int posX;
     private int posY;
     private int dimension;
@@ -13,6 +24,9 @@ public abstract class Entity
         this.dimension = dimension;
     }
 
+    /**
+     * Getters and Setters for the private fields of this class
+     */
     public int getPosX()
     {
         return posX;
@@ -33,11 +47,8 @@ public abstract class Entity
         this.posY = posY;
     }
 
-    public int getDimension() {
-        return dimension;
-    }
-
-    public void setDimension(int dimension) {
+    public void setDimension(int dimension)
+    {
         this.dimension = dimension;
     }
 }
